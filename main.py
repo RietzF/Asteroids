@@ -34,10 +34,15 @@ def main():
         pygame.display.flip()
         dt = clock.tick(60) / 1000
         updatable.update(dt)
+        
         for ast in asteroids:
              if ast.collision(player1):
                   print("Game over!")
                   sys.exit(0)
+             for bullet in shots:
+                if ast.collision(bullet):
+                     ast.split()
+                     bullet.kill()
 
 if __name__ == "__main__":
         main()
